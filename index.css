@@ -1,0 +1,175 @@
+body {
+    background-color:#a21caf;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    justify-content: space-between;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdf4ff;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+.logo {
+   color: #c026d3; 
+    
+   font-size: 50px;
+   font-weight: 800;
+   
+}
+.footer {
+    display: flex;
+    
+    font-size: 18px;
+    color: #fdf4ff;
+    font-weight: 500;
+    align-self: center;
+    padding: 10px;
+}
+.addBookBtn {
+    align-self: center;
+    height: 50px;
+    width: 160px;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 0px;
+   color: #fdf4ff;
+   background-color: #a21caf;
+   border: none;
+   margin: 50px;
+}
+.addBookBtn:hover {
+    cursor: pointer;
+    background-color: #c026d3;
+    border-radius: 5px;
+}
+.logInBtn {
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 0px;
+   color: #c026d3;
+   background-color: #fdf4ff;
+   border: none;
+}
+.logInBtn:hover {
+    cursor: pointer;
+    background-color: #c026d3;
+    border-radius: 5px;
+    color: #fdf4ff;
+}
+.formContainer {
+    display:none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+form {
+    position: absolute;
+    margin-top: 12.5%;
+    left: 43%;
+    width: 175px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #e879f9 ;
+    text-align: center;
+}
+form > div {
+    color: #701a75;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 600;
+}
+label {
+    color: #701a75;
+    font-size: 16px;
+    padding: 2px;
+    font-weight: 530;
+}
+.flex {
+    display: flex;
+    
+}
+.Btn {
+    border-color: #701a75;
+    align-self: center;
+    height: 50px;
+    width: 120px;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 0px;
+   color: #701a75;
+   background-color: #e879f9;
+   border-radius: 5px;
+   padding: 10px;
+   
+}
+.Btn:hover {
+    cursor: pointer;
+    border-color: #e879f9;
+   
+    color: #e879f9;
+    background-color: #701a75;
+    border-radius: 5px;
+}
+.card {
+    font-size: 25px;
+    padding: 5px;
+    margin: 15px;
+    border-radius: 5px;
+    background-color: #f0abfc;
+    color:#701a75;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Silkscreen', cursive;
+}
+.grid {
+    display: inline-grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    
+    margin-top: 15px;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+.bi:hover {
+    cursor: pointer;
+    color: #fdf4ff;
+}
+.flexFoot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    
+}
+.bi-github {
+    color: #fdf4ff;
+}
+.flexTools {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
