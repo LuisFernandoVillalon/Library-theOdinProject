@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Silkscreen&display=swap" rel="stylesheet">    <title>athenaeum.</title>
@@ -17,16 +17,16 @@
 
     <button class="addBookBtn">+ Add book</button>
     <div id="bookForm" class="formContainer">
-        <form name="formInfo" >
+        <form method="POST"  name="formInfo" >
             <div>Add new book</div>
-            <input type="text" id="title" placeholder="Title">
+            <input type="text" id="title" placeholder="Title" required="required"/>
             <input type="text" id="author" placeholder="Author">
             <input type="number" id="pages" placeholder="Pages">
             <div class="flex">
                 <label for="read">Have you read it?</label>
-                <input type="checkbox" id="read" value="true">
+                <input type="checkbox" id="read" value="true"/>
             </div>
-            <button type="button" class="Btn submitBtn">Submit</button>
+            <input type="submit" class="Btn submitBtn"/>
             <button type="button" class="Btn closeBtn">Close</button>
         </form>
     </div>
