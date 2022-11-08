@@ -40,7 +40,6 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 const addBookBtn = document.querySelector('.addBookBtn');
-
 addBookBtn.addEventListener('click', () => {
     openForm();
 
@@ -55,12 +54,17 @@ submitBtn.addEventListener('click', () => {
     let newAuthor = document.getElementById("author");
     let newPages = document.getElementById("pages");
     let newRead = document.getElementById("read");
-    addBookToLibrary(newTitle.value, newAuthor.value, newPages.value, newRead.checked);
-    displayLoop();
-    closeForm();
+    console.log(newTitle);
+    if (newTitle.value !== "") {
+        addBookToLibrary(newTitle.value, newAuthor.value, newPages.value, newRead.checked);
+        displayLoop();
+        closeForm();
+    } else {
+        newTitle.setCustomValidity(
+            "At least put down the title of the book!"
+          );
+    }
 });
-
-
 
 function displayLoop() {
     let grid = document.querySelector(".grid");
@@ -125,6 +129,7 @@ function closeForm() {
     formPage.classList.add("hide");
     formBackground.classList.remove("show");
     clearForm();
+    
 }
 
 function clearForm() {
@@ -132,6 +137,7 @@ function clearForm() {
 }
 
 function openForm() {
+
     let formPage = document.querySelector("form");
     let backgroundForm = document.querySelector(".formContainer")
     formPage.classList.remove("hide");
