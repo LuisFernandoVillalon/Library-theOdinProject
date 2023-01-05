@@ -4,6 +4,10 @@ const Book = {
     pages: 0,
     read: false
 }
+function saveLibrary(Library) {
+    localStorage.setItem('storedLibrary', JSON.stringify(Library));
+}
+
 
 function bookConstructor (title, author, pages, read) {
     this.title = title;
@@ -13,9 +17,24 @@ function bookConstructor (title, author, pages, read) {
 }
 
 let myLibrary = [];
+window.onload = () => {
+    if (localStorage.getItem("storedLibrary") === null) {
+        myLibrary = [];
+    } else {
+        let storedLibrary = JSON.parse(localStorage.getItem("storedLibrary"));
+        let localLibrary = storedLibrary.map((key) => {
+          myLibrary.push(key);
+        });
+
+        displayLoop();
+    }
+}
 
 bookConstructor.prototype.deleteBook = function(index) {
-     myLibrary.splice(index,1);
+    let storedLibrary = JSON.parse(localStorage.getItem("storedLibrary"));
+    storedLibrary.splice(index, 1);
+    localStorage.setItem('storedLibrary', JSON.stringify(storedLibrary));
+    myLibrary.splice(index,1);
 }
 bookConstructor.prototype.displayCheck = function(index) {
         let readStat = this.read;
@@ -33,28 +52,21 @@ bookConstructor.prototype.updateCheck = function(index) {
         this.read = "Read✅";
     }
 }
-
 function addBookToLibrary(title, author, pages, read) {
    let newBook =  new bookConstructor(title, author, pages, read);
    myLibrary.push(newBook);
+   saveLibrary(myLibrary);
 }
-
 const addBookBtn = document.querySelector('.addBookBtn');
 addBookBtn.addEventListener('click', () => {
     openForm();
-
-    let formBackground = document.querySelector(".formContainer");
-    formBackground.classList.add("show");
-
 });
-
 const submitBtn = document.querySelector('.submitBtn');
 submitBtn.addEventListener('click', () => {
     let newTitle = document.getElementById("title");
     let newAuthor = document.getElementById("author");
     let newPages = document.getElementById("pages");
     let newRead = document.getElementById("read");
-    console.log(newTitle);
     if (newTitle.value !== "") {
         addBookToLibrary(newTitle.value, newAuthor.value, newPages.value, newRead.checked);
         displayLoop();
@@ -65,12 +77,11 @@ submitBtn.addEventListener('click', () => {
           );
     }
 });
-
 function displayLoop() {
     let grid = document.querySelector(".grid");
     grid.innerHTML = '';
     for (let i = 0; i < myLibrary.length; i++) {
-        
+
         let temp = myLibrary[i];
         let currentBook = new bookConstructor(temp.title, temp.author, temp.pages, temp.read);
 
@@ -119,8 +130,6 @@ function displayLoop() {
         grid.appendChild(bCard);
         
     }
-    
-
 }
 
 function closeForm() {
@@ -129,7 +138,6 @@ function closeForm() {
     formPage.classList.add("hide");
     formBackground.classList.remove("show");
     clearForm();
-    
 }
 
 function clearForm() {
@@ -137,13 +145,10 @@ function clearForm() {
 }
 
 function openForm() {
-
     let formPage = document.querySelector("form");
     let backgroundForm = document.querySelector(".formContainer")
     formPage.classList.remove("hide");
     backgroundForm.classList.add("show");
-
-    
 }
 
 const closeBtn = document.querySelector('.closeBtn');
