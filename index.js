@@ -4,19 +4,20 @@ const Book = {
     pages: 0,
     read: false
 }
+//function is called eveytime the array containing the objects is updated
 function saveLibrary(Library) {
     localStorage.setItem('storedLibrary', JSON.stringify(Library));
 }
-
-
+//function is called whenever a new object of the same kind needs to be made
 function bookConstructor (title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
 }
-
 let myLibrary = [];
+//function checks if the local storage is populated, if it is it will display
+//whatever it has stored
 window.onload = () => {
     if (localStorage.getItem("storedLibrary") === null) {
         myLibrary = [];
@@ -29,7 +30,7 @@ window.onload = () => {
         displayLoop();
     }
 }
-
+//function that targets the prototype of the object being called upon
 bookConstructor.prototype.deleteBook = function(index) {
     let storedLibrary = JSON.parse(localStorage.getItem("storedLibrary"));
     storedLibrary.splice(index, 1);
@@ -53,8 +54,11 @@ bookConstructor.prototype.updateCheck = function(index) {
     }
 }
 function addBookToLibrary(title, author, pages, read) {
+    //creates a new object (book) 
    let newBook =  new bookConstructor(title, author, pages, read);
+   //stores the new object in the global array
    myLibrary.push(newBook);
+   //saves global array in local storage
    saveLibrary(myLibrary);
 }
 const addBookBtn = document.querySelector('.addBookBtn');
@@ -131,7 +135,6 @@ function displayLoop() {
         
     }
 }
-
 function closeForm() {
     let formPage = document.querySelector("form");
     let formBackground = document.querySelector(".formContainer");
@@ -139,18 +142,15 @@ function closeForm() {
     formBackground.classList.remove("show");
     clearForm();
 }
-
 function clearForm() {
     document.forms["formInfo"].reset();
 }
-
 function openForm() {
     let formPage = document.querySelector("form");
     let backgroundForm = document.querySelector(".formContainer")
     formPage.classList.remove("hide");
     backgroundForm.classList.add("show");
 }
-
 const closeBtn = document.querySelector('.closeBtn');
 closeBtn.addEventListener('click', () => {
     closeForm();
